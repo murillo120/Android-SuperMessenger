@@ -1,6 +1,7 @@
 package com.example.messenger.activities
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
@@ -39,6 +40,11 @@ class NewMessage_activity : AppCompatActivity() {
         custom_adapter.onItemClick = {
 
             Log.d("abacaxi", it.user_email)
+            val intent = Intent(applicationContext, Chat_Activity::class.java)
+
+            intent.putExtra("user", it)
+
+            startActivity(intent)
 
         }
 

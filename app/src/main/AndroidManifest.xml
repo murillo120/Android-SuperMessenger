@@ -34,6 +34,12 @@
         <activity
                 android:name=".activities.Home_Activity"
                 android:theme="@style/AppTheme"/>
+
+        <activity android:name=".activities.Chat_Activity"
+                  android:theme="@style/AppTheme">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                       android:value=".activities.Home_Activity"/>
+        </activity>
     </application>
 
 </manifest>
