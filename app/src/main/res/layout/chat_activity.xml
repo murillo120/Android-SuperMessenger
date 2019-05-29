@@ -2,10 +2,9 @@
 <android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-android:background="#FF0083FE">
+        android:background="#7caeff">
 
 
     <EditText
@@ -28,6 +27,7 @@ android:background="#FF0083FE">
             android:id="@+id/rv_chat"
             android:layout_width="395dp"
             android:layout_height="670dp"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

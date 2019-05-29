@@ -4,11 +4,13 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.net.Uri
 import android.util.Log
+import com.example.messenger.models.Message
 import com.example.messenger.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import java.util.*
+import kotlin.collections.ArrayList
 
 class ViewModel : ViewModel() {
 
@@ -16,6 +18,8 @@ class ViewModel : ViewModel() {
     val login = MutableLiveData<User>()
 
     val dbref = FirebaseDatabase.getInstance()
+
+    val listMessages = MutableLiveData<ArrayList<Message>>()
 
 
     fun register(user: User) {
@@ -78,6 +82,11 @@ class ViewModel : ViewModel() {
                 }
 
             }
+    }
+
+    fun getMessages(){
+
+
     }
 }
 
