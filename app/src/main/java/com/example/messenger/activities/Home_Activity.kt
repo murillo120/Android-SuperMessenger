@@ -47,6 +47,7 @@ class Home_Activity : AppCompatActivity(){
             when(item?.itemId){
                 R.id.menu_newMessage ->{
                     val intent = Intent(this, NewMessage_activity::class.java)
+                    intent.putExtra("userid", FirebaseAuth.getInstance().uid)
                     startActivity(intent)
 
                 }

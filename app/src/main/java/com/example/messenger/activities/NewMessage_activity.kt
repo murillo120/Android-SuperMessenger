@@ -26,6 +26,8 @@ class NewMessage_activity : AppCompatActivity() {
 
     val custom_adapter = CustomAdapter(R.layout.userlist_cel)
 
+    var id: String = " "
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.new_message_activity)
@@ -33,6 +35,10 @@ class NewMessage_activity : AppCompatActivity() {
         custom_adapter.settheContext(this)
         listzinha = ArrayList()
         supportActionBar?.title = "Select the User"
+
+        val intent = intent
+
+        id = intent.getStringExtra("userid")
 
         getContacts()
 
@@ -66,8 +72,9 @@ class NewMessage_activity : AppCompatActivity() {
 
                     var user = it.getValue(User::class.java)
 
-                    listzinha.add(user!!)
-
+                    if (user!!.uid != id) {
+                        listzinha.add(user!!)
+                    }
                 }
 
                 Log.d("abacaxi", listzinha.toString())

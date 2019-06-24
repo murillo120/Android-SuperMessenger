@@ -7,6 +7,9 @@ import android.util.Log
 import com.example.messenger.models.Message
 import com.example.messenger.models.User
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.ChildEventListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import java.util.*
@@ -20,6 +23,8 @@ class ViewModel : ViewModel() {
     val dbref = FirebaseDatabase.getInstance()
 
     val listMessages = MutableLiveData<ArrayList<Message>>()
+
+    var list = ArrayList<Message>()
 
 
     fun register(user: User) {
@@ -86,8 +91,39 @@ class ViewModel : ViewModel() {
 
     fun getMessages(){
 
+        val db: FirebaseDatabase = FirebaseDatabase.getInstance()
+
+        db.getReference("/messages").addChildEventListener(object : ChildEventListener {
+
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onChildMoved(p0: DataSnapshot, p1: String?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onChildChanged(p0: DataSnapshot, p1: String?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onChildAdded(p0: DataSnapshot, p1: String?) {
+
+                val messager = p0.getValue(Message::class.java)
+
+                list.add(messager!!)
+
+                listMessages.value = list
+
+            }
+            override fun onChildRemoved(p0: DataSnapshot) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+        })
+
+
+
+
 
     }
 }
-
-
